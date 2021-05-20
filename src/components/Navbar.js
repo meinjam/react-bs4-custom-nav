@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import { BsList } from 'react-icons/bs';
-import { BsX } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
@@ -38,12 +36,13 @@ const Navbar = () => {
             </Link>
           </li>
         </ul>
-        <div className='toggle-button'>
-          {showMenu ? (
+        <div className={showMenu ? 'toggle-button open' : 'toggle-button'}>
+          {/* {showMenu ? (
             <BsX onClick={handleMenuClick} />
           ) : (
             <BsList onClick={handleMenuClick} />
-          )}
+          )} */}
+          <div className='menu-btn' onClick={handleMenuClick}></div>
         </div>
       </div>
     </section>

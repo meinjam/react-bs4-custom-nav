@@ -39,6 +39,8 @@ a:hover {
 .navigation .toggle-button {
   transition: all 0.3s ease-in-out;
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .navigation .toggle-button .menu-btn {
@@ -113,6 +115,7 @@ a:hover {
   .navigation .menus.active {
     background: #242222;
     left: 0;
+    z-index: 1;
   }
 
   .navigation ul li {

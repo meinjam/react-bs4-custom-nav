@@ -4,12 +4,12 @@ import Home from './page/Home';
 import About from './page/About';
 import Service from './page/Service';
 import Contact from './page/Contact';
-import { TestProvider } from './contexts/TestContext';
+import { GlobalProvider } from './contexts/GlobalState';
 
 function App() {
   return (
     <Router>
-      <TestProvider>
+      <GlobalProvider>
         <Navbar />
         <Switch>
           <Route exact path='/'>
@@ -18,14 +18,14 @@ function App() {
           <Route path='/about'>
             <About />
           </Route>
-          <Route path='/service'>
+          <Route path='/items'>
             <Service />
           </Route>
-          <Route path='/contact'>
+          <Route path='/cart'>
             <Contact />
           </Route>
         </Switch>
-      </TestProvider>
+      </GlobalProvider>
     </Router>
   );
 }

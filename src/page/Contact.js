@@ -1,13 +1,26 @@
-import { useTest } from '../contexts/TestContext';
+import { useGlobalContext } from '../contexts/GlobalState';
 
 const Contact = () => {
-  const { tests } = useTest();
+  const { tests, deleteTest } = useGlobalContext();
+
+  const getSubtotal = (array) => {
+    let total = 0;
+    array.forEach((list) => {
+      total += list.age;
+    });
+    return total;
+  };
+
+  const handleDetete = (test) => {
+    // console.log(test);
+    deleteTest(test);
+  };
 
   return (
     <section>
       <div className='container'>
         <div className='row'>
-          <div className='col-md-12'>
+          <div className='col-md-12 table-responsive'>
             <table className='table table-striped my-4'>
               <thead>
                 <tr>
@@ -15,7 +28,7 @@ const Contact = () => {
                   <th scope='col'>Name</th>
                   <th scope='col'>Age</th>
                   <th scope='col'>Sex</th>
-                  <th scope='col'>Qty</th>
+                  <th scope='col'>Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -26,11 +39,20 @@ const Contact = () => {
                       <td>{test.name}</td>
                       <td>{test.age}</td>
                       <td>{test.sex}</td>
-                      <td>1</td>
+                      <td>
+                        <button
+                          className='btn btn-danger btn-sm'
+                          onClick={() => handleDetete(test)}
+                        >
+                          Delete
+                        </button>
+                      </td>
                     </tr>
                   ))}
               </tbody>
             </table>
+
+            <h2>Total Age: {getSubtotal(tests)} years</h2>
           </div>
         </div>
       </div>

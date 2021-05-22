@@ -1,11 +1,7 @@
-import { useTest } from '../contexts/TestContext';
+import { useGlobalContext } from '../contexts/GlobalState';
 
 const About = () => {
-  const { setTests } = useTest();
-
-  const handleCart = () => {
-    setTests([]);
-  };
+  const { clearTest } = useGlobalContext();
 
   return (
     <section>
@@ -13,7 +9,7 @@ const About = () => {
         <div className='row'>
           <div className='col-md-12'>
             <h1>About</h1>
-            <button className='btn btn-primary' onClick={handleCart}>
+            <button className='btn btn-primary' onClick={clearTest}>
               Clear Cart
             </button>
           </div>

@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CgShoppingCart } from 'react-icons/cg';
-import { useTest } from '../contexts/TestContext';
+import { useGlobalContext } from '../contexts/GlobalState';
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
-  const { tests } = useTest();
+  const { tests } = useGlobalContext();
 
   const handleMenuClick = () => {
     setShowMenu(!showMenu);
@@ -37,13 +37,13 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to='/service' onClick={handleMenuClick}>
-              Services
+            <Link to='/items' onClick={handleMenuClick}>
+              Items
             </Link>
           </li>
           <li>
-            <Link to='/contact' onClick={handleMenuClick}>
-              Contact
+            <Link to='/cart' onClick={handleMenuClick}>
+              Cart
             </Link>
           </li>
           <li className='cart'>

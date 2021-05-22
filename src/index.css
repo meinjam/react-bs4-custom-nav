@@ -87,6 +87,26 @@ a:hover {
   transform: rotate(-45deg) translate(30px, 30px);
 }
 
+/* Cart on hover */
+.cart-button {
+  position: relative;
+  display: inline-block;
+}
+
+.cart-dropdown {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.cart-button:hover .cart-dropdown {
+  display: block;
+}
+
 @media screen and (min-width: 768px) {
   .navigation .toggle-button {
     display: none;

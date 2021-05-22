@@ -46,9 +46,10 @@ const Navbar = () => {
               Cart
             </Link>
           </li>
-          <li className='cart'>
+          <li className='cart cart-button'>
             <CgShoppingCart style={{ fontSize: '20px' }} />(
             {addZero(tests.length)})
+            <div className='cart-dropdown'>Cart dropdown content</div>
           </li>
         </ul>
         <div className={showMenu ? 'toggle-button open' : 'toggle-button'}>

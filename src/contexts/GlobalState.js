@@ -3,6 +3,7 @@ import AppReducer from './AppReducer';
 
 const initialState = {
   tests: [],
+  carts: [],
 };
 
 const GlobalContext = createContext(initialState);
@@ -26,11 +27,33 @@ export function GlobalProvider({ children }) {
     dispatch({ type: 'DELETE_ALL_TEST' });
   };
 
+  //cart
+  const addCart = (item) => {
+    dispatch({ type: 'ADD_CART', payload: item });
+  };
+
+  const deleteCart = (item) => {
+    dispatch({ type: 'DELETE_CART', payload: item });
+  };
+
+  const addCartQuantity = (item) => {
+    dispatch({ type: 'ADD_CART_QUANTITY', payload: item });
+  };
+
+  const removeCartQuantity = (item) => {
+    dispatch({ type: 'REMOVE_CART_QUANTITY', payload: item });
+  };
+
   const value = {
     tests: state.tests,
     addTest,
     deleteTest,
     clearTest,
+    carts: state.carts,
+    addCart,
+    deleteCart,
+    addCartQuantity,
+    removeCartQuantity,
   };
 
   return (

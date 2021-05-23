@@ -1,11 +1,18 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CgShoppingCart } from 'react-icons/cg';
 import { useGlobalContext } from '../contexts/GlobalState';
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
-  const { tests } = useGlobalContext();
+  const { tests, carts } = useGlobalContext();
+  const [scroll, setScroll] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      setScroll(window.scrollY > 10);
+    });
+  }, []);
 
   const handleMenuClick = () => {
     setShowMenu(!showMenu);
@@ -19,8 +26,12 @@ const Navbar = () => {
     }
   };
 
+  const TotalCarts = carts.reduce((total, cart) => {
+    return total + cart.quantity;
+  }, 0);
+
   return (
-    <section className='navigation'>
+    <section className={`navigation ${scroll ? 'sticky' : ''}`}>
       <div className='container'>
         <Link to='/' className='nav-brand' onClick={() => setShowMenu(false)}>
           <h2 className='mb-0'>AmarLab</h2>
@@ -37,6 +48,16 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
+            <Link to='/products' onClick={handleMenuClick}>
+              Products
+            </Link>
+          </li>
+          <li>
+            <Link to='/products-cart' onClick={handleMenuClick}>
+              ProdCart
+            </Link>
+          </li>
+          <li>
             <Link to='/items' onClick={handleMenuClick}>
               Items
             </Link>
@@ -48,7 +69,7 @@ const Navbar = () => {
           </li>
           <li className='cart cart-button'>
             <CgShoppingCart style={{ fontSize: '20px' }} />(
-            {addZero(tests.length)})
+            {addZero(TotalCarts)})
             <div className='cart-dropdown'>Cart dropdown content</div>
           </li>
         </ul>

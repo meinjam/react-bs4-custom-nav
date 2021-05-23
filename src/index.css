@@ -13,6 +13,12 @@ a:hover {
   text-decoration: none !important;
 }
 
+@media screen and (min-width: 1200px) {
+  .container {
+    max-width: 1200px !important;
+  }
+}
+
 .navigation {
   background: pink;
   display: flex;
@@ -128,6 +134,7 @@ a:hover {
     width: 100%;
     left: -100%;
     opacity: 1;
+    z-index: 1;
     transition: all 0.5s ease;
     height: calc(100vh - 60px);
   }

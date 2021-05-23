@@ -5,6 +5,8 @@ import About from './page/About';
 import Service from './page/Service';
 import Contact from './page/Contact';
 import { GlobalProvider } from './contexts/GlobalState';
+import Products from './page/Products';
+import ProductsCart from './page/ProductsCart';
 
 function App() {
   return (
@@ -17,6 +19,12 @@ function App() {
           </Route>
           <Route path='/about'>
             <About />
+          </Route>
+          <Route path='/products'>
+            <Products />
+          </Route>
+          <Route path='/products-cart'>
+            <ProductsCart />
           </Route>
           <Route path='/items'>
             <Service />

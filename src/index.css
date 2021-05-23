@@ -20,9 +20,33 @@ a:hover {
 }
 
 .navigation {
-  background: pink;
+  background: #ffafbd;
   display: flex;
   height: 65px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  transition: all 0.3s ease-in-out;
+}
+
+.navigation.sticky {
+  background: #ffd1d9;
+  box-shadow: 0 8px 6px -9px #999;
+  animation: stickySlideDown 0.65s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+@keyframes stickySlideDown {
+  from {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+  }
+  to {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
 }
 
 .navigation .container {
@@ -91,6 +115,10 @@ a:hover {
 
 .navigation .toggle-button.open .menu-btn::after {
   transform: rotate(-45deg) translate(30px, 30px);
+}
+
+section:not(.navigation) {
+  margin-top: 65px;
 }
 
 /* Cart on hover */
